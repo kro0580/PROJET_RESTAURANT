@@ -1,0 +1,33 @@
+<!-- Message de notification -->
+<?php if($flashBag->hasMessages()): ?>
+    <aside class="notice">
+        <?php foreach($flashBag->fetchMessages() as $message): ?>
+            <p><?= $message ?></p>
+        <?php endforeach ?>
+    </aside>
+<?php endif; ?>
+
+
+
+<!-- Liste des aliments -->
+<table class="generic-table meal-list">
+    <caption>Carte du restaurant</caption>
+    <tbody>
+        <?php foreach($dishes as $dish): ?>
+            <tr>
+                <td><img src="<?= $wwwUrl ?>/images/meals/<?=  htmlspecialchars($dish['pictureName']) ?>" alt="<?=  htmlspecialchars($dish['title']) ?>"></td>
+                <td>
+                    <h2><?= htmlspecialchars($dish['title']) ?></h2>
+                    <p><?= htmlspecialchars($dish['description']) ?></p>
+                </td>
+                <td>
+                    <span class="price"><?= number_format($dish['price'] ,2)?>&nbsp;€</span>
+                    <a href="<?= $requestUrl ?>/cart?action=add&id=<?= $dish['id'] ?>&quantity=1" class="button button-info ajax-cart" title="ajouter <?= htmlspecialchars($dish['title']) ?> au panier">
+                        <i class="fa fa-cart-plus"></i>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        <!-- générer les <tr> qui affichent les produits (image, titre+description, prix) -->
+    </tbody>
+</table>

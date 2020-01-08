@@ -1,0 +1,57 @@
+
+    <h2>Formulaire d'inscription</h2>
+    <form class="generic-form" method="post">
+        <aside class="error-message hidden">
+                <?= $form->getErrorMessage() ?>
+        </aside>
+
+        <fieldset>
+            <legend>Information utilisateur</legend>
+            <ul>
+                <li>
+                    <label for="lastname" class="required">Nom</label>
+                    <input type="text" id="lastname" name="lastname" value="<?=$lastname ?>" data-name="nom" data-required>
+                </li>
+                <li>
+                    <label for="firstname" class="required">Prénom</label>
+                    <input type="text" id="firstname" name="firstname" value="<?=$firstname ?>"  data-name="prénom" data-required>
+                </li>
+                <li>
+                    <label for="address">Adresse</label>
+                    <textarea id="address" name="address" cols="50"><?=$address ?></textarea>
+                </li>
+                <li>
+                    <label for="city">Ville</label>
+                    <input type="text" id="city" name="city" value="<?=$city ?>">
+                </li>
+                <li>
+                    <label for="zipCode">Code Postal</label>
+                    <input type="text" id="zipCode" name="zipCode" value="<?=$zipCode ?>" data-type="positiveInteger" data-name="code postal" data-minlength="5" data-maxlength="5">
+                </li>
+                <li>
+                    <label for="phone">Téléphone</label>
+                    <input type="text" id="phone" name="phone" value="<?=$phone ?>"  data-type="positiveInteger" data-name="téléphone"  data-minlength="5"  data-maxlength="10">
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>Authentification</legend>
+            <ul>
+                <li>
+                    <label for="email" class="required">E-mail</label>
+                    <input type="text" id="email" name="email" value="<?=$email ?>" data-type="email" data-name="e-mail" data-required>
+                </li>
+                <li>
+                    <label for="password" class="required">Mot de passe</label>
+                    <input type="password" id="password" name="password" value="<?=$password ?>"  data-type="password" data-minlength="4" data-name="mot de passe" data-required>
+                </li>
+            </ul>
+        </fieldset>
+        <aside>
+            <p>Les champs marqués d'une étoile<span class="required"></span> sont obligatoires</p>
+        </aside>
+        <button class="button-primary button" type="submit" name="register">Inscription</button>
+    </form>
+
+
+    <script src="<?= $wwwUrl ?>/js/classes/FormValidator.class.js"></script>

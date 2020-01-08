@@ -1,0 +1,29 @@
+
+<h2>Formulaire de d'inscription</h2>
+<form class="generic-form" method="post">
+    <aside class="error-message hidden">
+        <?= $form->getErrorMessage() ?>
+    </aside>
+
+    <fieldset>
+        <legend>Authentification</legend>
+        <ul>
+            <li>
+                <label for="email" class="required">E-mail</label>
+                <input type="text" id="email" name="email" value="<?=$email ?>" data-type="email" data-name="E-mail">
+            </li>
+            <li>
+                <label for="password" class="required">Mot de passe</label>
+                <input type="password" id="password" name="password" value="<?=$password ?>" data-type="password" data-name="Mot de passe">
+            </li>
+        </ul>
+    </fieldset>
+    <aside>
+        <p>Les champs marqués d'une étoile<span class="required"></span> sont obligatoires</p>
+    </aside>
+    <button class="button-primary button" type="submit" name="login">Connexion</button>
+</form>
+
+
+
+<script src="<?= $wwwUrl ?>/js/classes/FormValidator.class.js"></script>

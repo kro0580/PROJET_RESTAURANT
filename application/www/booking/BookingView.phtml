@@ -1,0 +1,48 @@
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( ".datepicker" ).datepicker( {dateFormat: "yy-mm-dd"});
+    } );
+</script>
+
+
+<form class="generic-form" method="post">
+    <fieldset>
+        <legend>Formulaire de réservation</legend>
+        <ul>
+            <li>
+                <label for="bookDate">Quand souhaitez vous réserver ?</label>
+                <input type="text" id="bookDate" class="datepicker" name="bookDate">
+            </li>
+            <li>
+                <label for="bookDate">A quelle heure ?</label>
+                <select  id="hours" name="hours">
+                    <?php for($hours=11 ; $hours<= 22; $hours++): ?>
+                        <option value="<?= $hours ?>"><?= $hours ?></option>
+                    <?php endfor ?>
+                </select>
+                -
+                <select id="minutes" name="minutes">
+                    <?php for($minutes=0 ; $minutes<= 45; $minutes += 15): ?>
+                        <option value="<?= $minutes ?>"><?= $minutes ?></option>
+                    <?php endfor ?>
+                </select>
+            </li>
+            <li>
+                <label for="numberSeats">Combien de personnes</label>
+                <select  id="numberSeats" name="numberSeats">
+                    <?php for($number=1 ; $number<= 25; $number++): ?>
+                        <option value="<?= $number ?>"><?= $number ?></option>
+                    <?php endfor ?>
+                </select>
+            </li>
+            <li>
+                <label></label>
+                <button type="submit" name="booking">Enregistrez ma reservation</button>
+            </li>
+        </ul>
+    </fieldset>
+</form>
+

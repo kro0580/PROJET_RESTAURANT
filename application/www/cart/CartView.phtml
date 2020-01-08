@@ -1,0 +1,49 @@
+<table id="cart" class="generic-table">
+    <caption>Votre Panier</caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th>nom</th>
+            <th>prix u.</th>
+            <th>qté.</th>
+            <th>/s total</th>
+        </tr>
+    </thead>
+    <tfoot >
+        <tr>
+            <td colspan="4">Total HT</td>
+            <td class="price"><?= number_format($total, 2) ?> €</td>
+        </tr>
+        <tr>
+            <td colspan="4">TVA</td>
+            <td class="price"><?= number_format($total * 0.2, 2) ?> €</td>
+        </tr>
+        <tr>
+            <td colspan="4">Total TTC</td>
+            <td class="price"><?= number_format($total * 1.2, 2) ?> €</td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <?php if( !empty($dishes)) : ?>
+            <?php foreach($dishes as $dish): ?>
+                <tr>
+                    <td>
+                        <div class="img-container">
+                            <img src="<?= $wwwUrl ?>/images/meals/<?= htmlentities($dish['pictureName']) ?>" alt="<?= htmlentities($dish['title']) ?>">
+                        </div>
+                    </td>
+                    <td><?= htmlentities($dish['title']) ?></td>
+                    <td><?= number_format($dish['price'],2) ?></td>
+                    <td class="quantity">
+                        <a href="<?= $requestUrl ?>/cart?action=add&id=<?= $dish['id'] ?>&quantity=-1" data-id="<?= $dish['id'] ?>" data-action="add" data-quantity="1" class="ajax-cart">-</a>
+                        <input value="<?= $dish['quantity'] ?>">
+                        <a href="<?= $requestUrl ?>/cart?action=add&id=<?= $dish['id'] ?>&quantity=1" data-id="<?= $dish['id'] ?>" data-action="add" data-quantity="1" class="ajax-cart">+</a>
+                    </td>
+                    <td><?= number_format($dish['price'] * $dish['quantity'], 2) ?> €</td>
+                </tr>
+            <?php endforeach ?>
+        <?php else: ?>
+            <tr><td colspan="5">Vous n'avez aucun produit dans le panier</td></tr>
+        <?php endif ?>
+    </tbody>
+</table>
